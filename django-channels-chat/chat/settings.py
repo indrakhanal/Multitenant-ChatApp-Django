@@ -26,23 +26,8 @@ SECRET_KEY = 'ABC1234' #TODO Changeme
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = ['*']
 
-# Application definition
-# INSTALLED_APPS = [
-#     'django_tenants',
-#     'django.contrib.admin',
-#     'django.contrib.auth',
-#     'django.contrib.contenttypes',
-#     'django.contrib.sessions',
-#     'django.contrib.messages',
-#     'django.contrib.staticfiles',
-#     'django.contrib.sites',
-#     'core',
-#     'rest_framework',
-#     'channels',
-# ]
 
 SHARED_APPS = (
     'django_tenants',

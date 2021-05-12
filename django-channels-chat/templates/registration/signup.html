@@ -10,7 +10,8 @@
 {% block main %}
     <div class="container">
         <form class="form-signin" method="post">
-            {% csrf_token %}
+            <h2 class="form-signin-heading">Register Account here</h2>
+            <hr/>
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Sign up</button>

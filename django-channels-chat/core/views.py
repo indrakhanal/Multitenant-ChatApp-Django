@@ -26,23 +26,29 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def logout_(request):
     logout(request)
     return redirect('login')
 
 
 def login_(request):
-    if request.method == 'GET':
-        return render(request, 'registration/login.html')
-    else:
-        u = request.POST.get('username')
-        p = request.POST.get('password')
-        user = authenticate(username=u, password=p)
-        if user is not None:
-            login(request, user)
-            return render(request, 'core/chat.html')
-
+    try:
+        if request.method == 'GET':
+            return render(request, 'registration/login.html')
         else:
-            messages.add_message(request, messages.ERROR, 'username or password not correct')
-            return redirect('login')
+            u = request.POST.get('username')
+            p = request.POST.get('password')
+            user = authenticate(username=u, password=p)
+            if user is not None:
+                login(request, user)
+                # return redirect('home')
+                return render(request, 'core/chat.html')
+
+            else:
+                message = 'username or password not correct'
+                return render(request, 'registration/login.html', {'errors':message})
+    except:
+        error_message = 'Something went wrong please retry'
+        return render(request, 'registration/login.html', {'errors':error_message})
+

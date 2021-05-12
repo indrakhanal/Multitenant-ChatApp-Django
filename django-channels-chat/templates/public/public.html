@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" type="text/css"/>
+{% endblock %}
+
+{% block main %}
+
+    {% if message %}
+        <div class="container">
+            <div class="col-lg-4 col-lg-offset-4">
+                <div class="span3 alert alert-danger">
+                    <h4>{{ message }}<span class="close">X</span></h4>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="container">
+    <div class="form-signin">
+
+        <h2>Follow the link to chat with</h2><br/>
+        <a style="text-decoration: none;" href="http://t1.chatapp.com:8000"><button class="btn btn-lg btn-danger btn-block" type="submit">
+            Tenant One
+        </button></a><br/>
+        <a style="text-decoration: none;" href="http://t2.chatapp.com:8000"><button class="btn btn-lg btn-danger btn-block" type="submit">
+            Tenant Two
+        </button></a><br/>
+        <a style="text-decoration: none;" href="http://t3.chatapp.com:8000"><button class="btn btn-lg btn-danger btn-block" type="submit">
+            Tenant Three
+        </button></a>
+    </div>
+
+{#        <h4><a href="http://t1.chatapp.com:8000">Tenant One</a></h4>#}
+{#        <h4><a href="http://t2.chatapp.com:8000">Tenant Two</a></h4>#}
+{#        <h4><a href="http://t3.chatapp.com:8000">Tenant Three</a></h4>#}
+    </div>
+
+    <script>
+        var closebtns = document.getElementsByClassName("span3 alert alert-danger");
+        var i;
+        for (i = 0; i < closebtns.length; i++) {
+            closebtns[i].addEventListener("click", function() {
+                this.parentElement.style.display = 'none';
+            });
+        }
+
+    </script>
+
+{% endblock %}
